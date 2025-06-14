@@ -1,0 +1,97 @@
+{
+  "name": "zhongji-experiment",
+  "author": {
+    "name": "zhongji experiment"
+  },
+  "homepage": "",
+  "version": "1.0.4",
+  "private": true,
+  "main": "public/electron.js",
+  "dependencies": {
+    "@ant-design/icons": "^5.0.1",
+    "babel-eslint": "^10.1.0",
+    "canvg": "^4.0.1",
+    "react": "^18.2.0",
+    "react-app-rewired": "^2.1.8",
+    "react-scripts": "5.0.1",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-jest": "^27.4.2",
+    "chromedriver": "96.0.0",
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "customize-cra": "^1.0.0",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "jest": "^27.4.3",
+    "less-loader": "6.0",
+    "nbb": "^1.2.169",
+    "postinstall-postinstall": "^2.1.0",
+    "react-error-overlay": "6.0.9",
+    "shelljs": "^0.8.5",
+    "wait-on": "^7.0.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
+  },
+  "scripts": {
+    "start": "  concurrently \"npm run start-react\"  \"wait-on http://127.0.0.1:3001 && npm run start-electron  \"",
+    "version-cljs": " npx nbb version_tool.cljs",
+    "start-react": "react-app-rewired start",
+    "start-electron": "electron .",
+    "test": "jest"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "build": {
+    "appId": "com.zj.app",
+    "productName": "中机试验",
+    "npmRebuild": true,
+    "asar": false,
+    "mac": {
+      "category": "tools"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.png"
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "icon": "build/icon.png"
+    },
+    "files": [
+      "build/**/*",
+      "package.json"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
